@@ -9,7 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import type { Restaurant } from "../data/HomeData";
 
-/* Component styling with some functionality */
+// Component styling with some functionality
 type Props = {
   item: Restaurant;
   variant?: "featured" | "list";

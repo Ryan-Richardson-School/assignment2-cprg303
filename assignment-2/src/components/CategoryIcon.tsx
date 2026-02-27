@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
 
-/* Component styling with some functionality */
+// Component styling with some functionality 
 type Props = {
   emoji: string;
   label: string;
