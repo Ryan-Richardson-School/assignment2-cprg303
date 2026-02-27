@@ -1,6 +1,7 @@
 import React from "react";
 import { Pressable, Text, StyleSheet } from "react-native";
 
+/* Component styling with some functionality */
 type Props = {
   label: string;
   selected?: boolean;
