@@ -6,6 +6,7 @@ import Account from "../screens/Account";
 import PersonalInfo from "../screens/PersonalInfo";
 import Security from "../screens/Security";
 import PrivacyData from "../screens/Privacy&Data";
+import AccountCheckup from "../screens/AccountCheckup";
 
 export type RootStackParamList = {
   Tabs: undefined;
@@ -45,6 +46,7 @@ export default function RootStack() {
       <Stack.Screen name="PersonalInfo" component={PersonalInfo} />
       <Stack.Screen name="Security" component={Security} />
       <Stack.Screen name="PrivacyData" component={PrivacyData} />
+      <Stack.Screen name="AccountCheckup" component={AccountCheckup} />
     </Stack.Navigator>
   );
 }
