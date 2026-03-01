@@ -1,6 +1,21 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, Image, StyleSheet, ImageSourcePropType } from "react-native";
+import type { RouteProp } from "@react-navigation/native";
 
-export default function Store({ route }) {
+type Order = {
+  restaurant: string;
+  image: ImageSourcePropType;
+};
+
+type StoreRouteParams = {
+  Store: { order: Order };
+};
+
+type Props = {
+  route: RouteProp<StoreRouteParams, "Store">;
+};
+
+export default function Store({ route }: Props) {
   const { order } = route.params;
 
   return (

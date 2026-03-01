@@ -1,40 +1,34 @@
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 
+type AccountStackParamList = {
+  AccountMain: undefined;
+  PersonalInfo: undefined;
+  Security: undefined;
+  PrivacyData: undefined;
+  AccountCheckup: undefined;
+};
+
 export default function Account() {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<AccountStackParamList>>();
 
   return (
     <View style={styles.container}>
-
-      {/* TOP BAR */}
-      <View style={styles.topBar}>
-        <Text style={[styles.topTab, styles.activeTab]}>Home</Text>
-
-        <TouchableOpacity onPress={() => navigation.navigate("PersonalInfo")}>
-          <Text style={styles.topTab}>Personal info</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.navigate("Security")}>
-          <Text style={styles.topTab}>Security</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.navigate("PrivacyData")}>
-          <Text style={styles.topTab}>Privacy & Data</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* PROFILE */}
+      {/* Profile */}
       <View style={styles.profileSection}>
         <View style={styles.avatar}>
           <Ionicons name="person" size={50} color="#bab3b3" />
         </View>
+
         <Text style={styles.name}>John Smith</Text>
         <Text style={styles.email}>johnsmith@gmail.com</Text>
       </View>
 
-      {/* ICON CARDS */}
+      {/* Quick links */}
       <View style={styles.iconRow}>
         <TouchableOpacity
           style={styles.iconCard}
@@ -61,13 +55,11 @@ export default function Account() {
         </TouchableOpacity>
       </View>
 
-      {/* SUGGESTIONS SECTION */}
+      {/* Suggestions */}
       <View style={styles.suggestionWrapper}>
         <Text style={styles.suggestionHeader}>Suggestions</Text>
 
         <View style={styles.suggestionCard}>
-
-          {/* ICON IN TOP RIGHT */}
           <View style={styles.iconContainer}>
             <Ionicons name="id-card-outline" size={28} color="black" />
           </View>
@@ -75,7 +67,8 @@ export default function Account() {
           <Text style={styles.suggestionTitle}>Complete your account checkup</Text>
 
           <Text style={styles.suggestionText}>
-            Complete your account checkup to make Uber work better for you and keep you secure.
+            Complete your account checkup to make Uber work better for you and keep
+            you secure.
           </Text>
 
           <TouchableOpacity
@@ -86,48 +79,41 @@ export default function Account() {
           </TouchableOpacity>
         </View>
       </View>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 20 },
-
-  /* TOP BAR */
-  topBar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 25,
-  },
-  topTab: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#777",
-  },
-  activeTab: {
-    color: "black",
-    borderBottomWidth: 2,
-    borderColor: "black",
-    paddingBottom: 4,
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 20,
   },
 
-  /* PROFILE */
-  profileSection: { alignItems: "center", marginBottom: 30 },
-  
+  // Profile
+  profileSection: {
+    alignItems: "center",
+    marginBottom: 30,
+  },
   avatar: {
-  width: 90,
-  height: 90,
-  borderRadius: 45,
-  backgroundColor: "#f7f3f3",
-  marginBottom: 10,
-  justifyContent: "center",
-  alignItems: "center",
-},
-  name: { fontSize: 22, fontWeight: "700" },
-  email: { fontSize: 14, color: "#555" },
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: "#f7f3f3",
+    marginBottom: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  name: {
+    fontSize: 22,
+    fontWeight: "700",
+  },
+  email: {
+    fontSize: 14,
+    color: "#555",
+  },
 
-  /* ICON CARDS */
+  // Icon cards
   iconRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -147,9 +133,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  /* SUGGESTIONS */
-  suggestionWrapper: { 
-    marginTop: 10 
+  // Suggestions
+  suggestionWrapper: {
+    marginTop: 10,
   },
   suggestionHeader: {
     fontSize: 18,

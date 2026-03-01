@@ -1,6 +1,25 @@
+import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import type { RouteProp } from "@react-navigation/native";
 
-export default function Receipt({ route }) {
+type Order = {
+  id: string;
+  restaurant: string;
+  items: string;
+  date: string;
+  total: string;
+  image?: any;
+};
+
+type ReceiptRouteParams = {
+  Receipt: { order: Order };
+};
+
+type Props = {
+  route: RouteProp<ReceiptRouteParams, "Receipt">;
+};
+
+export default function Receipt({ route }: Props) {
   const { order } = route.params;
 
   return (

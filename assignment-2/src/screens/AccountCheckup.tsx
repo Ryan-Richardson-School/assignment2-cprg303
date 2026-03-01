@@ -1,16 +1,17 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 export default function AccountCheckup() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Account checkup</Text>
 
-      {/* PASSKEYS */}
+      {/* Passkeys */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Passkeys</Text>
+
         <Text style={styles.cardText}>
-          Use passkeys for an easier, faster and more secure sign in to your Uber account
+          Use passkeys for an easier, faster and more secure sign in to your
+          Uber account
         </Text>
 
         <TouchableOpacity style={styles.button}>
@@ -18,19 +19,19 @@ export default function AccountCheckup() {
         </TouchableOpacity>
       </View>
 
-      {/* 2 STEP VERIFICATION */}
+      {/* 2-step verification */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>2-step verification</Text>
         <Text style={styles.value}>Turn on 2-step verification</Text>
       </View>
 
-      {/* PHONE */}
+      {/* Phone */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Phone number</Text>
         <Text style={styles.value}>+1 (825) 962-0996</Text>
       </View>
 
-      {/* EMAIL */}
+      {/* Email */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Email</Text>
         <Text style={styles.value}>anagharoy411@gmail.com</Text>
@@ -40,8 +41,17 @@ export default function AccountCheckup() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 20 },
-  title: { fontSize: 26, fontWeight: "700", marginBottom: 20 },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 20,
+  },
+
+  title: {
+    fontSize: 26,
+    fontWeight: "700",
+    marginBottom: 20,
+  },
 
   card: {
     backgroundColor: "#f5f5f5",

@@ -6,30 +6,40 @@ export default function PersonalInfo() {
     <View style={styles.container}>
       <Text style={styles.title}>Personal info</Text>
 
-      {/* PROFILE IMAGE */}
+      {/* Profile picture */}
       <View style={styles.profilePic} />
 
-      {/* INFO CARD */}
+      {/* Info card */}
       <View style={styles.card}>
-        {/* NAME */}
+        {/* Name */}
         <Text style={styles.label}>Name</Text>
         <Text style={styles.value}>John Smith</Text>
 
-        {/* PHONE */}
+        {/* Phone */}
         <Text style={styles.label}>Phone number</Text>
         <View style={styles.row}>
           <Text style={styles.value}>+1 (825) 978-2117</Text>
-          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" style={styles.icon} />
+          <Ionicons
+            name="checkmark-circle"
+            size={20}
+            color="#4CAF50"
+            style={styles.icon}
+          />
         </View>
 
-        {/* EMAIL */}
+        {/* Email */}
         <Text style={styles.label}>Email</Text>
         <View style={styles.row}>
           <Text style={styles.value}>johnsmith@gmail.com</Text>
-          <Ionicons name="checkmark-circle" size={20} color="#4CAF50" style={styles.icon} />
+          <Ionicons
+            name="checkmark-circle"
+            size={20}
+            color="#4CAF50"
+            style={styles.icon}
+          />
         </View>
 
-        {/* LANGUAGE */}
+        {/* Language */}
         <Text style={styles.label}>Language</Text>
         <View style={styles.row}>
           <Text style={styles.value}>Update device language</Text>

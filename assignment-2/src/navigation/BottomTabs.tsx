@@ -1,19 +1,13 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Platform,
-  Text,
-} from "react-native";
+import { View, TouchableOpacity, StyleSheet, Platform, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import HomeNavigation from "./HomeNavigation";
 import Browse from "../screens/Browse";
 import Search from "../screens/Search";
-import Orders from "../screens/Orders";
-import Account from "../screens/Account";
+import OrdersNavigation from "./OrdersNavigation";
+import AccountNavigation from "./AccountNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +42,7 @@ function FloatingTabBar({ state, navigation }: any) {
           iconName = isFocused ? "person" : "person-outline";
         }
 
-        // Center Search Pill
+        // Center Search pill
         if (isSearch) {
           return (
             <TouchableOpacity
@@ -57,18 +51,13 @@ function FloatingTabBar({ state, navigation }: any) {
               style={styles.searchPill}
               activeOpacity={0.85}
             >
-              <Ionicons
-                name="search"
-                size={18}
-                color="#111"
-                style={{ marginRight: 6 }}
-              />
+              <Ionicons name="search" size={18} color="#111" style={{ marginRight: 6 }} />
               <Text style={styles.searchText}>Search</Text>
             </TouchableOpacity>
           );
         }
 
-        // Outer Circles
+        // Outer circles
         return (
           <TouchableOpacity
             key={route.key}
@@ -76,11 +65,7 @@ function FloatingTabBar({ state, navigation }: any) {
             style={[styles.circle, isFocused && styles.activeCircle]}
             activeOpacity={0.85}
           >
-            <Ionicons
-              name={iconName}
-              size={20}
-              color={isFocused ? "white" : "#111"}
-            />
+            <Ionicons name={iconName} size={20} color={isFocused ? "white" : "#111"} />
           </TouchableOpacity>
         );
       })}
@@ -97,8 +82,8 @@ export default function BottomTabs() {
       <Tab.Screen name="Home" component={HomeNavigation} />
       <Tab.Screen name="Browse" component={Browse} />
       <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Orders" component={Orders} />
-      <Tab.Screen name="Account" component={Account} />
+      <Tab.Screen name="Orders" component={OrdersNavigation} />
+      <Tab.Screen name="Account" component={AccountNavigation} />
     </Tab.Navigator>
   );
 }
@@ -125,7 +110,7 @@ const styles = StyleSheet.create({
 
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.10,
+    shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 5,
   },

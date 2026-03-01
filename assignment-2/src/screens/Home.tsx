@@ -21,8 +21,73 @@ import {
   topChips,
 } from "../data/HomeData";
 
-export default function Home({ navigation }: any) {
+export default function Home() {
   const [selectedTopChipId, setSelectedTopChipId] = useState("all");
+
+  const header = (
+    <View style={styles.headerWrap}>
+      {/* Top Row */}
+      <View style={styles.topRow}>
+        <Text style={styles.addressText}>Your Location</Text>
+        <Ionicons name="notifications-outline" size={22} color="#111" />
+      </View>
+
+      {/* Top Chips */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.hScroll}
+      >
+        {topChips.map((chip) => (
+          <SelectablePillButton
+            key={chip.id}
+            label={chip.label}
+            leftEmoji={chip.emoji}
+            selected={chip.id === selectedTopChipId}
+            onPress={() => setSelectedTopChipId(chip.id)} // unchanged behavior
+          />
+        ))}
+      </ScrollView>
+
+      {/* Categories */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.hScroll}
+      >
+        {categories.map((cat) => (
+          <CategoryIcon key={cat.id} emoji={cat.emoji} label={cat.label} />
+        ))}
+      </ScrollView>
+
+      {/* Quick Filters */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.hScroll}
+      >
+        {quickFilters.map((q) => (
+          <SelectablePillButton key={q.id} label={q.label} />
+        ))}
+      </ScrollView>
+
+      {/* Featured */}
+      <Text style={styles.sectionTitle}>Featured on Uber Eats</Text>
+      <FlatList
+        data={featured}
+        horizontal
+        keyExtractor={(item) => item.id}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.featuredList}
+        renderItem={({ item }) => (
+          <RestaurantCard item={item} variant="featured" />
+        )}
+      />
+
+      {/* Main list title */}
+      <Text style={styles.sectionTitle}>Places you might like</Text>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -31,105 +96,8 @@ export default function Home({ navigation }: any) {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContent}
         ListHeaderComponentStyle={styles.headerPadding}
-        ListHeaderComponent={
-          <View style={styles.headerWrap}>
-            {/* Top Row */}
-            <View style={styles.topRow}>
-              <Text style={styles.addressText}>Your Location</Text>
-              <Ionicons
-                name="notifications-outline"
-                size={22}
-                color="#111"
-              />
-            </View>
-
-            {/* Top Buttons */}
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              style={styles.hScroll}
-            >
-              {topChips.map((chip) => (
-                <SelectablePillButton
-                  key={chip.id}
-                  label={chip.label}
-                  leftEmoji={chip.emoji}
-                  selected={chip.id === selectedTopChipId}
-                  onPress={() => setSelectedTopChipId(chip.id)}
-                />
-              ))}
-            </ScrollView>
-
-            {/* Categories */}
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              style={styles.hScroll}
-            >
-              {categories.map((cat) => (
-                <CategoryIcon
-                  key={cat.id}
-                  emoji={cat.emoji}
-                  label={cat.label}
-                />
-              ))}
-            </ScrollView>
-
-            {/* Quick Filters */}
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              style={styles.hScroll}
-            >
-              {quickFilters.map((q) => (
-                <SelectablePillButton
-                  key={q.id}
-                  label={q.label}
-                />
-              ))}
-            </ScrollView>
-
-            {/* Featured Section */}
-            <Text style={styles.sectionTitle}>
-              Featured on Uber Eats
-            </Text>
-
-            <FlatList
-              data={featured}
-              horizontal
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.featuredList}
-              renderItem={({ item }) => (
-                <RestaurantCard
-                  item={item}
-                  variant="featured"
-                  onPress={() =>
-                    navigation?.navigate?.("Restaurant", {
-                      restaurantId: item.id,
-                    })
-                  }
-                />
-              )}
-            />
-
-            {/* Places Section Title */}
-            <Text style={styles.sectionTitle}>
-              Places you might like
-            </Text>
-          </View>
-        }
-        renderItem={({item}) => (
-          <RestaurantCard
-            item={item}
-            variant="list"
-            onPress={() =>
-              navigation?.navigate?.("Restaurant", {
-                restaurantId: item.id,
-              })
-            }
-          />
-        )}
+        ListHeaderComponent={header}
+        renderItem={({ item }) => <RestaurantCard item={item} variant="list" />}
       />
     </SafeAreaView>
   );
@@ -151,8 +119,8 @@ const styles = StyleSheet.create({
 
   topRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    justifyContent: "space-between",
   },
 
   addressText: {
@@ -177,7 +145,6 @@ const styles = StyleSheet.create({
   },
 
   listContent: {
-    paddingBottom: 120,
+    paddingBottom: 40,
   },
-  
 });
