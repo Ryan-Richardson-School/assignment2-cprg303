@@ -18,6 +18,22 @@ export default function Account() {
 
   return (
     <View style={styles.container}>
+      {/* TOP BAR */}
+      <View style={styles.topBar}>
+        <Text style={[styles.topTab, styles.activeTab]}>Home</Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate("PersonalInfo")}>
+          <Text style={styles.topTab}>Personal info</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Security")}>
+          <Text style={styles.topTab}>Security</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("PrivacyData")}>
+          <Text style={styles.topTab}>Privacy & Data</Text>
+        </TouchableOpacity>
+      </View>
       {/* Profile */}
       <View style={styles.profileSection}>
         <View style={styles.avatar}>
@@ -180,4 +196,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
+  topBar: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  marginBottom: 25,
+},
+
+topTab: {
+  fontSize: 14,
+  fontWeight: "600",
+  color: "#777",
+},
+
+activeTab: {
+  color: "black",
+  borderBottomWidth: 2,
+  borderColor: "black",
+  paddingBottom: 4,
+},
 });
